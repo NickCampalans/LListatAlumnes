@@ -1,6 +1,8 @@
-### GET FRIENDs GET http://localhost:8383/friends
+### GET FRIENDs 
+GET http://localhost:8383/friends
 
-### GET FRIEND GET http://localhost:8383/friends/james
+### GET FRIEND 
+GET http://localhost:8383/friends/james
 
 ### ADD A FRIEND POST http://localhost:8383/addfriend Content-Type: application/json
 
@@ -19,3 +21,13 @@
 {
 "name": "banana"
 }
+
+### GET ALUMNES
+GET http://localhost:3000/api/alumnes
+
+### GET ALUMNE BY ID
+GET http://localhost:3000/api/alumne/MNMIutRwczQaiDa0SQoZ
+
+
+### GET ALUMNE BY ID
+GET http://localhost:3000/api/alumne/cV8gT0Z8xCJtc8CRCcCJ
