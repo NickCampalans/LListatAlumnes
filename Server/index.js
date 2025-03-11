@@ -1,8 +1,10 @@
 
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors()); 
 app.use(express.static('www/browser'));
 
 const fs = require('firebase-admin');
@@ -13,7 +15,7 @@ const db = fs.firestore();
 
 app.get('/api/alumne/:id', async (req, res) => {
     try {
-       const alumneRef = db.collection ("alumnes").doc(req.params.id);
+       const alumneRef = db.collection("alumnes").doc(req.params.id);
        const response = await alumneRef.get();
        res.send(response.data()); 
     } catch(error) {
@@ -23,16 +25,17 @@ app.get('/api/alumne/:id', async (req, res) => {
 
 app.get('/api/alumnes', async (req, res) => {
     try {
-        const docsRef = await db.collection ("alumnes");
+        const docsRef = await db.collection("alumnes");
         const mainDocs = [];
 
         const docs = await docsRef.get();
+        
 
         docs.forEach(async (doc) => {
             mainDocs.push({ ...doc.data(), _id: doc.id });
         });
         
-        res.send(mainDocs); 
+        res.send({dades: mainDocs, tamany: docs.size}); 
      } catch(error) {
          res.send(error);
      }
